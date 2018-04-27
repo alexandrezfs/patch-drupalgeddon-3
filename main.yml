@@ -7,116 +7,116 @@
 
   tasks:
 
-  - name: "Backup file /var/www/html/includes/request-sanitizer.inc"
-    copy:
-       src: /var/www/html/includes/request-sanitizer.inc
-       dest: /tmp/request-sanitizer.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "RELEASE"
-    
-   - name: "Backup file /var/www/html/includes/bootstrap.inc"
-     copy:
-       src: /var/www/html/includes/bootstrap.inc
-       dest: /tmp/bootstrap.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "RELEASE"
-       
-   - name: "Backup file /var/www/html/modules/file/file.module"
-     copy:
-       src: /var/www/html/modules/file/file.module
-       dest: /tmp/file.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "RELEASE"
-           
-   - name: "Backup file /var/www/html/includes/common.inc"
-     copy:
-       src: /var/www/html/includes/common.inc
-       dest: /tmp/common.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "RELEASE"
+    - name: "Backup file /var/www/html/includes/request-sanitizer.inc"
+      copy:
+         src: /var/www/html/includes/request-sanitizer.inc
+         dest: /tmp/request-sanitizer.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "RELEASE"
+
+     - name: "Backup file /var/www/html/includes/bootstrap.inc"
+       copy:
+         src: /var/www/html/includes/bootstrap.inc
+         dest: /tmp/bootstrap.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "RELEASE"
+
+     - name: "Backup file /var/www/html/modules/file/file.module"
+       copy:
+         src: /var/www/html/modules/file/file.module
+         dest: /tmp/file.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "RELEASE"
+
+     - name: "Backup file /var/www/html/includes/common.inc"
+       copy:
+         src: /var/www/html/includes/common.inc
+         dest: /tmp/common.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "RELEASE"
 
 
-  - name: "APPLY PATCH DRUPALGEDDON2/3 - 1"
-    template:
-      src: templates/request-sanitizer.release.j2
-      dest: /var/www/html/includes/request-sanitizer.inc
-      owner: apache
-      group: apache
-      mode: '0644'
-      backup: yes
-      when: release_mode == "RELEASE"
+    - name: "APPLY PATCH DRUPALGEDDON2/3 - 1"
+      template:
+        src: templates/request-sanitizer.release.j2
+        dest: /var/www/html/includes/request-sanitizer.inc
+        owner: apache
+        group: apache
+        mode: '0644'
+        backup: yes
+        when: release_mode == "RELEASE"
 
-  - name: "APPLY PATCH DRUPALGEDDON2/3 - 2"
-    template:
-      src: templates/bootstrap.inc.release.j2
-      dest: /var/www/html/includes/bootstrap.inc
-      owner: apache
-      group: apache
-      mode: '0644'
-      backup: yes
-      when: release_mode == "RELEASE"
+    - name: "APPLY PATCH DRUPALGEDDON2/3 - 2"
+      template:
+        src: templates/bootstrap.inc.release.j2
+        dest: /var/www/html/includes/bootstrap.inc
+        owner: apache
+        group: apache
+        mode: '0644'
+        backup: yes
+        when: release_mode == "RELEASE"
 
-  - name: "APPLY PATCH DRUPALGEDDON2/3 - 3"
-    template:
-      src: templates/common.inc.release.j2
-      dest: /var/www/html/includes/common.inc
-      owner: apache
-      group: apache
-      mode: '0644'
-      backup: yes
-      when: release_mode == "RELEASE"
+    - name: "APPLY PATCH DRUPALGEDDON2/3 - 3"
+      template:
+        src: templates/common.inc.release.j2
+        dest: /var/www/html/includes/common.inc
+        owner: apache
+        group: apache
+        mode: '0644'
+        backup: yes
+        when: release_mode == "RELEASE"
 
-  - name: "APPLY PATCH DRUPALGEDDON2/3 - 4"
-    template:
-      src: templates/file.module.release.j2
-      dest: /var/www/html/modules/file/file.module
-      owner: apache
-      group: apache
-      mode: '0644'
-      backup: yes
-      when: release_mode == "RELEASE"
+    - name: "APPLY PATCH DRUPALGEDDON2/3 - 4"
+      template:
+        src: templates/file.module.release.j2
+        dest: /var/www/html/modules/file/file.module
+        owner: apache
+        group: apache
+        mode: '0644'
+        backup: yes
+        when: release_mode == "RELEASE"
 
 
-  - name: "Rollback file /var/www/html/includes/request-sanitizer.inc"
-    copy:
-       dest: /var/www/html/includes/request-sanitizer.inc
-       src: /tmp/request-sanitizer.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "ROLLBACK"
+    - name: "Rollback file /var/www/html/includes/request-sanitizer.inc"
+      copy:
+         dest: /var/www/html/includes/request-sanitizer.inc
+         src: /tmp/request-sanitizer.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "ROLLBACK"
 
-   - name: "Rollback file /var/www/html/includes/bootstrap.inc"
-     copy:
-       dest: /var/www/html/includes/bootstrap.inc
-       src: /tmp/bootstrap.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "ROLLBACK"
+     - name: "Rollback file /var/www/html/includes/bootstrap.inc"
+       copy:
+         dest: /var/www/html/includes/bootstrap.inc
+         src: /tmp/bootstrap.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "ROLLBACK"
 
-   - name: "Rollback file /var/www/html/modules/file/file.module"
-     copy:
-       dest: /var/www/html/modules/file/file.module
-       src: /tmp/file.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "ROLLBACK"
+     - name: "Rollback file /var/www/html/modules/file/file.module"
+       copy:
+         dest: /var/www/html/modules/file/file.module
+         src: /tmp/file.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "ROLLBACK"
 
-   - name: "Rollback file /var/www/html/includes/common.inc"
-     copy:
-       dest: /var/www/html/includes/common.inc
-       src: /tmp/common.inc.tmp
-       owner: apache
-       group: apache
-       mode: 0644
-       when: release_mode == "ROLLBACK"
+     - name: "Rollback file /var/www/html/includes/common.inc"
+       copy:
+         dest: /var/www/html/includes/common.inc
+         src: /tmp/common.inc.tmp
+         owner: apache
+         group: apache
+         mode: 0644
+         when: release_mode == "ROLLBACK"
